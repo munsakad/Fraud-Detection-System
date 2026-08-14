@@ -1,0 +1,14 @@
+**/__pycache__/
+*.pyc
+ml/venv/
+ml/data/*.csv
+ml/models/*.joblib
+ml/models/*.pt
+ml/models/*.json
+ml/reports/*.json
+backend/venv/
+backend/.env
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+.DS_Store
