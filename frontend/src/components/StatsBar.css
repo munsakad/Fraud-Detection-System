@@ -1,0 +1,63 @@
+.stats-bar {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 18px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.stats-conn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  color: var(--text-muted);
+  padding-right: 18px;
+  border-right: 1px solid var(--border-soft);
+}
+
+.conn-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-faint);
+}
+
+.conn-dot.is-live {
+  background: var(--green);
+  box-shadow: 0 0 0 3px var(--green-dim);
+}
+
+.stats-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stats-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+}
+
+.stats-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.stats-critical {
+  color: var(--red);
+}
+.stats-high {
+  color: var(--red);
+  opacity: 0.85;
+}
+.stats-medium {
+  color: var(--amber);
+}

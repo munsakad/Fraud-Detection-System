@@ -1,0 +1,50 @@
+.risk-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.risk-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.risk-low {
+  color: var(--green);
+  background: var(--green-dim);
+}
+.risk-low .risk-dot {
+  background: var(--green);
+}
+
+.risk-medium {
+  color: var(--amber);
+  background: var(--amber-dim);
+}
+.risk-medium .risk-dot {
+  background: var(--amber);
+}
+
+.risk-high,
+.risk-critical {
+  color: var(--red);
+  background: var(--red-dim);
+}
+.risk-high .risk-dot,
+.risk-critical .risk-dot {
+  background: var(--red);
+}
+
+.risk-pulse .risk-dot {
+  animation: pulse 1.4s ease-in-out infinite;
+}

@@ -1,0 +1,118 @@
+.preset-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-ghost {
+  background: var(--panel-raised);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.btn-ghost:hover {
+  color: var(--text);
+  border-color: var(--text-faint);
+}
+
+.score-sim-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 18px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .score-sim-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.score-sim-form {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-row label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.form-row input,
+.form-row select {
+  background: var(--panel-raised);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 8px 9px;
+  color: var(--text);
+  font-size: 12.5px;
+  font-family: var(--font-mono);
+  text-transform: capitalize;
+}
+
+.form-row-checks {
+  grid-template-columns: 1fr 1fr;
+  row-gap: 10px;
+}
+
+.check-label {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 8px !important;
+  font-size: 12px !important;
+  color: var(--text) !important;
+  text-transform: none;
+}
+
+.check-label input {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--red);
+}
+
+.score-sim-result {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  min-height: 200px;
+}
+
+.result-ensemble {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.result-ensemble-label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.result-ensemble-value {
+  font-size: 22px;
+  font-weight: 600;
+  margin-right: auto;
+}
+
+.result-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

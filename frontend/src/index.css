@@ -1,0 +1,90 @@
+:root {
+  --bg: #0a0e13;
+  --panel: #11161d;
+  --panel-raised: #161d26;
+  --border: #232c37;
+  --border-soft: #1b232c;
+  --text: #e7ecef;
+  --text-muted: #8a99a8;
+  --text-faint: #56636f;
+
+  --red: #ef5b5b;
+  --red-dim: #4a2225;
+  --amber: #e8a33d;
+  --amber-dim: #4a3a1c;
+  --green: #4fbf85;
+  --green-dim: #1c4230;
+  --blue: #5b8def;
+  --blue-dim: #1f2f4a;
+
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-body: "Inter", system-ui, sans-serif;
+  --radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+}
+
+code,
+pre,
+.mono {
+  font-family: var(--font-mono);
+}
+
+::selection {
+  background: var(--red-dim);
+}
+
+a {
+  color: var(--blue);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
