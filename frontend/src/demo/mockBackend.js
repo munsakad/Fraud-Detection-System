@@ -94,7 +94,8 @@ async function route(url, init = {}) {
   }
 
   if (path === "/api/transactions/stats") {
-    const flaggedTotal = Object.values(stats.flagged).reduce((a, b) => a + b, 0);
+    const { medium, high, critical } = stats.flagged;
+    const flaggedTotal = medium + high + critical;
     return json({
       total_scored: stats.total,
       flagged_counts: { ...stats.flagged },
