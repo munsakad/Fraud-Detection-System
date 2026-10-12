@@ -1,0 +1,74 @@
+name: Deploy demo to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: ml/requirements.txt
+
+      - name: Install ML dependencies (CPU-only PyTorch)
+        run: |
+          pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r ml/requirements.txt python-dotenv
+
+      - name: Generate data and train all three models
+        working-directory: ml
+        run: |
+          mkdir -p data models reports
+          python generate_data.py
+          python train_models.py
+
+      - name: Export models and scored replay for the browser
+        run: python ml/export_web.py
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm ci || npm install --no-audit --no-fund
+
+      - name: Verify JS inference matches Python
+        working-directory: frontend
+        run: node scripts/check-parity.mjs
+
+      - name: Build static demo
+        working-directory: frontend
+        env:
+          VITE_DEMO: "true"
+        run: npx vite build --base=/${{ github.event.repository.name }}/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: frontend/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
