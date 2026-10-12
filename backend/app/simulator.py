@@ -79,7 +79,8 @@ def recent_events(limit: int = 50) -> list[dict]:
 
 def get_stats() -> dict:
     total = _stats["total"]
-    flagged_total = sum(_stats["flagged"].values())
+    # "low" is tracked for the breakdown but is not a flag
+    flagged_total = sum(v for k, v in _stats["flagged"].items() if k != "low")
     return {
         "total_scored": total,
         "flagged_counts": dict(_stats["flagged"]),
